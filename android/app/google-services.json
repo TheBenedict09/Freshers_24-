@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "376036827437",
+    "project_id": "fresher-24",
+    "storage_bucket": "fresher-24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376036827437:android:aeb31424849f584d12b3a4",
+        "android_client_info": {
+          "package_name": "com.example.fresher_scanner_2024"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIv4GMddsDvPcGmNlOiLTgqJX52yadJyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
