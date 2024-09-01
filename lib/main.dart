@@ -151,33 +151,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  Future<void> resetNumberOfEntries() async {
-    final firestore = FirebaseFirestore.instance;
-
-    try {
-      final querySnapshot = await firestore.collection('details').get();
-      // Loop through each document and update 'number_of_entries' to 0
-      for (var doc in querySnapshot.docs) {
-        await doc.reference.update({'number_of_entries': 0});
-      }
-
-      // Optionally, show a confirmation message to the user
-      if (mounted) {
-        showSnackbar("Number of entries reset for all records.");
-      }
-    } on FirebaseException catch (e) {
-      // Handle Firebase-specific exceptions
-      if (mounted) {
-        showSnackbar("Firebase error occurred: ${e.message}");
-      }
-    } catch (e) {
-      // Handle any other generic exceptions
-      if (mounted) {
-        showSnackbar("Error Occurred: $e");
-      }
-    }
-  }
-
+  
   Future<void> showCustomDialog(
       String message, String animationFile, Color barrierColor) async {
     return showDialog(
@@ -245,44 +219,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red,
-        child: const Icon(Icons.warning),
-        onPressed: () async {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                actionsAlignment: MainAxisAlignment.center,
-                content: SizedBox(
-                  width: MediaQuery.sizeOf(context).width * 0.8,
-                  height: MediaQuery.sizeOf(context).height * 0.8,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text(
-                        "Warning: RESET",
-                        style: TextStyle(
-                            fontFamily: "Limelight",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 50),
-                      ),
-                      FloatingActionButton.large(
-                        backgroundColor: Colors.red,
-                        child: const Text("Reset"),
-                        onPressed: () async {
-                          await resetNumberOfEntries();
-                        },
-                      )
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
-        },
-      ),
+      
       body: Stack(children: [
         SizedBox(
           width: MediaQuery.sizeOf(context).width,
